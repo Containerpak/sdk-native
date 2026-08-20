@@ -9,6 +9,14 @@
   "desktop_entries": [],
   "dependencies": [],
   "addons": [],
+  "addon_provider": {
+    "id": "native",
+    "slot": "sdk.native",
+    "mode": "exclusive",
+    "exports": {
+      "path": ["/usr/bin"]
+    }
+  },
   "idle_time": 0,
   "override": {
     "socketX11": false,
