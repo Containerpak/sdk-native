@@ -1,11 +1,59 @@
 {
-  "$schema": "https://raw.githubusercontent.com/Containerpak/cpak/v2/schema/manifest-v2.json",
-  "manifest_version": "2.0",
+  "$schema": "https://raw.githubusercontent.com/Containerpak/cpak/v2/schema/manifest-v3.json",
+  "manifest_version": "3.0",
   "name": "Native SDK",
   "description": "C and C++ compilers, build systems, debuggers and package tools.",
   "version": "26.04",
-  "image": "ghcr.io/containerpak/sdk-native:main",
-  "binaries": ["/usr/bin/cc", "/usr/bin/c++", "/usr/bin/gcc", "/usr/bin/g++", "/usr/bin/clang", "/usr/bin/make", "/usr/bin/cmake", "/usr/bin/meson", "/usr/bin/ninja", "/usr/bin/autoconf", "/usr/bin/automake", "/usr/bin/libtool", "/usr/bin/bison", "/usr/bin/flex", "/usr/bin/ccache", "/usr/bin/gdb", "/usr/bin/lld", "/usr/bin/mold", "/usr/bin/ar", "/usr/bin/as", "/usr/bin/ld", "/usr/bin/nm", "/usr/bin/objcopy", "/usr/bin/objdump", "/usr/bin/ranlib", "/usr/bin/readelf", "/usr/bin/size", "/usr/bin/strings", "/usr/bin/strip", "/usr/bin/patchelf", "/usr/bin/valgrind", "/usr/bin/pkg-config", "/usr/bin/cups-config", "/usr/bin/dpkg-buildpackage", "/usr/bin/dpkg-checkbuilddeps", "/usr/bin/dpkg-genbuildinfo", "/usr/bin/dpkg-genchanges", "/usr/bin/dpkg-gencontrol", "/usr/bin/dpkg-gensymbols", "/usr/bin/dpkg-shlibdeps", "/usr/bin/dpkg-source", "/usr/bin/dh", "/usr/bin/dh_auto_build", "/usr/bin/dh_auto_configure", "/usr/bin/dh_auto_install", "/usr/bin/dh_auto_test", "/usr/bin/dh_clean"],
+  "image": "ghcr.io/containerpak/sdk-native@sha256:6384388f018bf4cfafd8df80f4323d15259e30a95c6d11c519929774e150a0dc",
+  "binaries": [
+    "/usr/bin/cc",
+    "/usr/bin/c++",
+    "/usr/bin/gcc",
+    "/usr/bin/g++",
+    "/usr/bin/clang",
+    "/usr/bin/make",
+    "/usr/bin/cmake",
+    "/usr/bin/meson",
+    "/usr/bin/ninja",
+    "/usr/bin/autoconf",
+    "/usr/bin/automake",
+    "/usr/bin/libtool",
+    "/usr/bin/bison",
+    "/usr/bin/flex",
+    "/usr/bin/ccache",
+    "/usr/bin/gdb",
+    "/usr/bin/lld",
+    "/usr/bin/mold",
+    "/usr/bin/ar",
+    "/usr/bin/as",
+    "/usr/bin/ld",
+    "/usr/bin/nm",
+    "/usr/bin/objcopy",
+    "/usr/bin/objdump",
+    "/usr/bin/ranlib",
+    "/usr/bin/readelf",
+    "/usr/bin/size",
+    "/usr/bin/strings",
+    "/usr/bin/strip",
+    "/usr/bin/patchelf",
+    "/usr/bin/valgrind",
+    "/usr/bin/pkg-config",
+    "/usr/bin/cups-config",
+    "/usr/bin/dpkg-buildpackage",
+    "/usr/bin/dpkg-checkbuilddeps",
+    "/usr/bin/dpkg-genbuildinfo",
+    "/usr/bin/dpkg-genchanges",
+    "/usr/bin/dpkg-gencontrol",
+    "/usr/bin/dpkg-gensymbols",
+    "/usr/bin/dpkg-shlibdeps",
+    "/usr/bin/dpkg-source",
+    "/usr/bin/dh",
+    "/usr/bin/dh_auto_build",
+    "/usr/bin/dh_auto_configure",
+    "/usr/bin/dh_auto_install",
+    "/usr/bin/dh_auto_test",
+    "/usr/bin/dh_clean"
+  ],
   "desktop_entries": [],
   "dependencies": [],
   "addons": [],
@@ -14,21 +62,18 @@
     "slot": "sdk.native",
     "mode": "exclusive",
     "exports": {
-      "path": ["/usr/bin"]
+      "path": [
+        "/usr/bin"
+      ]
     }
   },
   "idle_time": 0,
   "override": {
-    "socketX11": false,
     "socketWayland": false,
     "socketPulseAudio": false,
-    "socketSessionBus": false,
-    "socketSystemBus": false,
     "socketSshAgent": true,
     "socketCups": false,
     "socketGpgAgent": true,
-    "socketAtSpiBus": false,
-    "socketBluetooth": false,
     "deviceDri": false,
     "deviceKvm": false,
     "deviceShm": false,
@@ -40,7 +85,12 @@
     "deviceAll": false,
     "notification": false,
     "openURI": false,
-    "filesystem": [{"path": "home", "access": "read-write"}],
+    "filesystem": [
+      {
+        "path": "home",
+        "access": "read-write"
+      }
+    ],
     "env": [],
     "network": true,
     "process": false,
@@ -48,7 +98,6 @@
     "memoryMaxMB": 0,
     "cpuQuota": 0,
     "pidsMax": 0,
-    "asRoot": false,
-    "allowedHostCommands": []
+    "asRoot": false
   }
 }

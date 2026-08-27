@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   packages: write
   attestations: write
   id-token: write
@@ -52,6 +52,21 @@ jobs:
       - name: Verify SDK
         run: docker run --rm ghcr.io/containerpak/sdk-native:main sh -c 'gcc --version && clang --version && make --version && cmake --version && meson --version && ninja --version && autoconf --version && bison --version && flex --version && gdb --version && ld --version && objdump --version && dpkg-buildpackage --version && command -v dh && cups-config --version && cups-config --cflags --libs && printf "int main(void) { return 0; }\n" | gcc -m32 -x c - -o /tmp/native-sdk-32 && readelf -h /tmp/native-sdk-32 | grep "Class:.*ELF32"'
 
+      - name: Pin published image
+        env:
+          IMAGE_DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          repository="$(jq -r '.image | split("@")[0]' cpak.json)"
+          jq --arg image "${repository}@${IMAGE_DIGEST}" '.image = $image' cpak.json > cpak.json.next
+          mv cpak.json.next cpak.json
+          if ! git diff --quiet -- cpak.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add cpak.json
+            git commit -m "chore: pin published image [skip ci]"
+            git push origin "HEAD:${{ github.event.repository.default_branch }}"
+          fi
+
       - uses: sigstore/cosign-installer@d7543c93d881b35a8faa02e8e3605f69b7a1ce62
 
       - name: Install cpak-sign
@@ -67,7 +82,6 @@ jobs:
           repository="$(printf '%s' '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')"
           cpak-sign state \
             --origin "github.com/${repository}" \
-            --image "ghcr.io/${repository}:main" \
             --generation "${{ github.run_number }}"
           cosign sign-blob --yes --new-bundle-format=true \
             --bundle cpak-state.sigstore.json cpak-state
