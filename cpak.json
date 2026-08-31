@@ -4,7 +4,7 @@
   "name": "Native SDK",
   "description": "C and C++ compilers, build systems, debuggers and package tools.",
   "version": "26.04",
-  "image": "ghcr.io/containerpak/sdk-native@sha256:92b08967c755ab8755f096dae99b57bbd7dbd80b19f08d2b8340ce2c05ff9a9b",
+  "image": "ghcr.io/containerpak/sdk-native@sha256:bd3e673af493d8cbb5efc9d05458860c4a527b4138e0428b29c3c0efff7e10d8",
   "binaries": [
     "/usr/bin/cc",
     "/usr/bin/c++",
